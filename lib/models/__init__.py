@@ -1,4 +1,4 @@
-import sqlite3
-
-CONN = sqlite3.connect('company.db')
-CURSOR = CONN.cursor()
+from .appointment import Appointment
+from .patient import Patient
+from .doctor import Doctor
+from .medical_record import MedicalRecord
