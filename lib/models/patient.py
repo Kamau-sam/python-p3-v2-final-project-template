@@ -1,36 +1,30 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from database.db_helper import execute_query, fetch
 
 class Patient:
-    def create_table(self):
-        query = '''
-        CREATE TABLE IF NOT EXISTS patient (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            age INTEGER,
-            gender TEXT
-        );
-        '''
-        execute_query(query)
+    def __init__(self, id, first_name, last_name, dob, address):
+        self.id = id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.dob = dob
+        self.address = address
 
-    def drop_table(self):
-        query = "DROP TABLE IF EXISTS patient;"
-        execute_query(query)
+    @classmethod
+    def get_all_patients(cls):
+        pass
 
-    def create(self, name, age, gender):
-        query = '''
-        INSERT INTO patient (name, age, gender) 
-        VALUES (?, ?, ?);
-        '''
-        execute_query(query, (name, age, gender))
+    @classmethod
+    def get_patient_by_name(cls, name):
+        pass
 
-    def all(self):
-        query = "SELECT * FROM patient;"
-        return fetch(query)
+    @classmethod
+    def get_patient_by_id(cls, patient_id):
+        pass
 
-    def find_by_id(self, patient_id):
-        query = "SELECT * FROM patient WHERE id = ?;"
-        return fetch(query, (patient_id,))
+    @classmethod
+    def create(cls, first_name, last_name, dob, address):
+        pass
+
+    def update_address(self):
+        pass
+
+    def delete_patient(self):
+        pass
